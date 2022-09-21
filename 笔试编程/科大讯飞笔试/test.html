@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        function signalVerify(signal) {
+            let denghaoIndex = signal.indexOf("=")
+            let firstValue = signal.substring(0, denghaoIndex)
+            let endValue = signal.substring(denghaoIndex + 1)
+
+            if (firstValue.length !== 1) {
+                return false;
+            }
+            if (firstValue !== 'a' && firstValue !== 'b' && firstValue !== 'c' && firstValue !== 'd' && firstValue !== 'e' && firstValue !== 'f' && firstValue !== 'g' && firstValue !== 'h' && firstValue !== 'i' && firstValue !== 'j' && firstValue !== 'k' && firstValue !== 'l' && firstValue !== 'm' && firstValue !== 'n' && firstValue !== 'o' && firstValue !== 'p' && firstValue !== 'q' && firstValue !== 'r' && firstValue !== 's' && firstValue !== 't' && firstValue !== 'u' && firstValue !== 'v' && firstValue !== 'w' && firstValue !== 'x' && firstValue !== 'y' && firstValue !== 'z') {
+                return false;
+            }
+
+            for (let i = 0; i < endValue.length; i++) {
+                if (endValue[0] === ' ') {
+                    return false;
+                }
+                if (endValue[i] !== 'a' && endValue[i] !== 'b' && endValue[i] !== 'c' && endValue[i] !== 'd' && endValue[i] !== 'e' && endValue[i] !== 'f' && endValue[i] !== 'g' && endValue[i] !== 'h' && endValue[i] !== 'i' && endValue[i] !== 'j' && endValue[i] !== 'k' && endValue[i] !== 'l' && endValue[i] !== 'm' && endValue[i] !== 'n' && endValue[i] !== 'o' && endValue[i] !== 'p' && endValue[i] !== 'q' && endValue[i] !== 'r' && endValue[i] !== 's' && endValue[i] !== 't' && endValue[i] !== 'u' && endValue[i] !== 'v' && endValue[i] !== 'w' && endValue[i] !== 'x' && endValue[i] !== 'y' && endValue[i] !== 'z'&&endValue[i] !== '1' && endValue[i] !== '2' && endValue[i] !== '3' && endValue[i] !== '4' && endValue[i] !== '5' && endValue[i] !== '6' && endValue[i] !== '7' && endValue[i] !== '8' && endValue[i] !== '9' && endValue[i] !== '0'&&endValue[i]!==' ') {
+                    return false;
+                }
+
+            }
+
+
+            return true
+
+        }
+
+        console.log(signalVerify('v=0123'));
+    </script>
+</body>
+
+</html>
