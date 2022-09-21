@@ -64,7 +64,7 @@
 ![img](https://cdn.nlark.com/yuque/0/2020/png/1500604/1603554694842-2764d9ed-d5fe-45f4-8ede-34a73d237f94.png#align=left&display=inline&height=118&margin=%5Bobject%20Object%5D&originHeight=137&originWidth=516&size=0&status=done&style=stroke&width=446)
 
 
-### 1. 两栏布局(float,flex,父相子绝)（margin-left,overflow:hidden,绝对定位的left）
+### 1. 两栏布局(左float:left定宽+右margin-left/overflow:hidden)（左定宽+右flex:1）（左父相子绝定宽+ margin-left、左定宽+右父相子绝absolute的left）
 
 一般两栏布局指的是**左边一栏宽度固定，右边一栏宽度自适应**，两栏布局的具体实现：
 

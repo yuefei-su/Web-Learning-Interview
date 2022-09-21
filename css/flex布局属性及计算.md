@@ -24,4 +24,77 @@
 | flex        | [flex-grow],[flex-shrink],[flex-basis]           | 复合属性。flex:1;等价于flex:1 1 auto                                                                    |
 | align-self  | auto,flex-start,flex-end,center,baseline,stretch | 设置或检索弹性盒子元素在交叉轴（纵轴）方向上的对齐方式，可以覆盖父容器align-items的设置                 |
 
+### 3.水平垂直居中：flex布局（align-items:center和justify-content:center）
+通过 `display: flex`,`align-items:center` 和 `justify-content:center`设置容器的垂直和水平方向上为居中对齐，然后它的子元素也可以实现垂直和水平的居中。该方法要**考虑兼容的问题**，该方法在移动端用的较多
+```html
+<style>
+    .father {
+        display: flex;/*flex布局*/
+        justify-content: center;/*水平居中*/
+        align-items: center;/*垂直居中*/
+        width: 200px;
+        height: 200px;
+        background: skyblue;
+    }
+    .son {
+        width: 100px;
+        height: 100px;
+        background: red;
+    }
+</style>
+<div class="father">
+    <div class="son"></div>
+</div>
+```
 
+
+### 4.两栏布局：flex 布局，将左边元素设置为固定宽度 100px，将右边的元素设置为 flex:1。
+
+```html
+<style>
+    .box{
+        display: flex;/*flex 布局*/
+    }
+    .left {
+        width: 100px;
+        background: tomato;
+    }
+    .right {
+        flex: 1;/* width:100%;flex:1 1 auto;*/
+        /* 默认为flex:0不索取扩大 1不缩小 auto自动宽度 */
+        background: gold;
+    }
+</style>
+<div class="box">
+    <div class="left">左边</div>
+    <div class="right">右边</div>
+</div>
+```
+
+### 5.三栏布局：利用 flex 布局，左右两栏设置固定大小，中间一栏设置为 flex:1;(width:100%;)。
+
+```html
+<style>
+    .wrap {
+        display: flex;
+    }
+    .left {
+        width: 200px;
+        background: coral;
+    }
+    .right {
+        width: 120px;
+        background: lightblue;
+    }
+    .middle {
+        background: #555;
+        flex:1;/* width: 100%; */
+    }
+</style>
+<div class="wrap">
+    <!-- 每一栏按顺序放 -->
+    <div class="left">左侧</div>
+    <div class="middle">中间</div>
+    <div class="right">右侧</div>
+</div>
+```
