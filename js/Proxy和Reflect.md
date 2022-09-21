@@ -1,4 +1,34 @@
 
+## Proxy
+Proxy 对象用于创建一个对象的代理，从而实现基本操作的拦截和自定义（如属性查找、赋值、枚举、函数调用等）。
+
+```js
+const p = new Proxy(target, handler)
+```
+Proxy是构造函数，它有两个参数target和handler。
+Proxy只有一个静态方法`Proxy.revocable(target, handler)`：创建一个可撤销的Proxy对象。
+
+- target是用Proxy包装的目标对象（可以是任何类型的对象，包括原生数组，函数，甚至另一个代理）。
+
+- handler是一个对象，其属性是当执行一个操作时定义代理的行为的函数。
+
+### handler对象的方法
+```js
+get(target,propKey,receiver)：拦截对象属性的读取
+set(target,propKey,value,receiver)：拦截对象属性的设置
+has(target,propKey)：拦截propKey in proxy的操作，返回一个布尔值
+deleteProperty(target,propKey)：拦截delete proxy[propKey]的操作，返回一个布尔值
+ownKeys(target)：拦截Object.keys(proxy)、for...in等循环，返回一个数组
+getOwnPropertyDescriptor(target, propKey)：拦截Object.getOwnPropertyDescriptor(proxy, propKey)，返回属性的描述对象
+defineProperty(target, propKey, propDesc)：拦截Object.defineProperty(proxy, propKey, propDesc），返回一个布尔值
+preventExtensions(target)：拦截Object.preventExtensions(proxy)，返回一个布尔值
+getPrototypeOf(target)：拦截Object.getPrototypeOf(proxy)，返回一个对象
+isExtensible(target)：拦截Object.isExtensible(proxy)，返回一个布尔值
+setPrototypeOf(target, proto)：拦截Object.setPrototypeOf(proxy, proto)，返回一个布尔值
+apply(target, object, args)：拦截 Proxy 实例作为函数调用的操作
+construct(target, args)：拦截 Proxy 实例作为构造函数调用的操作
+```
+
 ## Reflect内置对象
 
 ### Reflect的方法
@@ -72,9 +102,13 @@ if (Reflect.defineProperty(obj, prop, attr)) {
 
 ### Reflect的应用
 
-- Proxy
+#### Proxy  
+若需要在Proxy内部调用对象的默认行为，**建议使用Reflect来操作对象**，其是ES6中操作对象而提供的新 API。  
 
-Reflect 对象上面的方法和 Proxy 上面都是一一对应的，参数也是完全相同的，因此在 Proxy 中可以使用 Reflect 来操作对象：
+建议使用Reflect来操作对象的原因：
+- Reflect 对象上面的方法和 Proxy 上面都是一一对应的，参数也是完全相同的。
+- 修改某些Object方法的返回结果，让其变得更合理（定义不存在属性行为的时候不报错而是返回false）
+- 让Object操作都变成函数行为
 
 ```js
 new Proxy(obj, {
@@ -92,3 +126,8 @@ new Proxy(obj, {
   }
 }
 ```
+
+
+[掘金参考1](https://juejin.cn/post/6844903790739456013)
+
+[面试官参考2](https://vue3js.cn/interview/es6/proxy.html)
